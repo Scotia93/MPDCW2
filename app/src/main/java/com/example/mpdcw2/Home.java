@@ -31,7 +31,7 @@ public class Home extends Fragment implements View.OnClickListener {
     private Button startButton;
     private String result;
     private String url1="";
-    private String urlSource="https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/2648579";
+    private String urlSource="https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/5128581";
     public CurrentWeather currentWeather = null;
     private LinkedList<CurrentWeather> weatherForecast;
     boolean useTitle = false;
@@ -89,20 +89,60 @@ public class Home extends Fragment implements View.OnClickListener {
                     {
                         String temp = xpp.nextText();
 
+                        String[]titleArray = temp.split(",");
+                        String Summary = titleArray[0];
+                        String day = Summary.split(":")[0].trim();
+                        String weather = Summary.split(":")[1].trim();
+
+
                         //set description in new class
-                        currentWeather.setTitle(temp);
+                        currentWeather.setDay(day);
+                        currentWeather.setWeather(weather);
 
-
+                        Log.d("MyTag", "day is: "+ day + "\nweather is: " + weather);
                         Log.d("MyTag", "Weather for " + temp);
                     }
                     else if (xpp.getName().equalsIgnoreCase("description") && useTitle)
                     {
                         String temp = xpp.nextText();
 
+                        String[]descriptionArray = temp.split(",");
+                        String maxTemp = descriptionArray[0].trim();
+                        String minTemp = descriptionArray[1].trim();
+                        String windDirection = descriptionArray[2].trim();
+                        String windSpeed = descriptionArray[3].trim();
+                        String visibility = descriptionArray[4].trim();
+                        String pressure = descriptionArray[5].trim();
+                        String humidity = descriptionArray[6].trim();
+                        String uvRisk = descriptionArray[7].trim();
+                        String pollution = descriptionArray[8].trim();
+                        String sunriseTime = descriptionArray[9].trim();
+                        String sunsetTime = descriptionArray[10].trim();
+
                         //set description in new class
                         //weather.setdescription(temp)
-                        currentWeather.setDescription(temp);
-
+                        currentWeather.setMaxTemp(maxTemp);
+                        currentWeather.setMinTemp(minTemp);
+                        currentWeather.setWindDirection(windDirection);
+                        currentWeather.setWindSpeed(windSpeed);
+                        currentWeather.setVisibility(visibility);
+                        currentWeather.setPressure(pressure);
+                        currentWeather.setHumidity(humidity);
+                        currentWeather.setUvRisk(uvRisk);
+                        currentWeather.setPollution(pollution);
+                        currentWeather.setSunriseTime(sunriseTime);
+                        currentWeather.setSunsetTime(sunsetTime);
+                        Log.d("MyTag", "maxTemp is " + maxTemp +
+                                "\nminTemp is " + minTemp +
+                                "\nwindDirection is " + windDirection +
+                                "\nwindSpeed is " + windSpeed +
+                                "\nvisibility is " + visibility +
+                                "\npressure is " + pressure +
+                                "\nhumidity is " + humidity +
+                                "\nuvRisk is " + uvRisk +
+                                "\npollution is " + pollution +
+                                "\nsunriseTime is " + sunriseTime +
+                                "\nsunsetTime is " + sunsetTime);
                         Log.d("MyTag", "Temperature info:  " + temp);
                     }
                 } else if (eventType == XmlPullParser.END_TAG) {
