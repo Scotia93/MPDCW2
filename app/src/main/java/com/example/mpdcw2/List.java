@@ -92,23 +92,23 @@ public class List extends Fragment implements View.OnClickListener {
         }
         else if (aview == newYorkButton){
             String newYorkID = "5128581";
-            new Thread(new Task(newYorkID)).start();
+            new Thread(new Task(newYorkID, newYorkWeather)).start();
         }
         else if (aview == londonButton){
             String londonID = "2643743";
-            new Thread(new Task(londonID)).start();
+            new Thread(new Task(londonID, unitedKingdomWeather)).start();
         }
         else if (aview == omanButton){
             String omanID = "287286";
-            new Thread(new Task(omanID)).start();
+            new Thread(new Task(omanID, omanWeather)).start();
         }
         else if (aview == mauritiusButton){
             String mauritiusID = "934154";
-            new Thread(new Task(mauritiusID)).start();
+            new Thread(new Task(mauritiusID, mauritiusWeather)).start();
         }
         else if (aview == bangButton){
             String bangID = "1185241";
-            new Thread(new Task(bangID)).start();
+            new Thread(new Task(bangID, bangWeather)).start();
         }
     }
 
@@ -197,10 +197,11 @@ public class List extends Fragment implements View.OnClickListener {
     private class Task implements Runnable
     {
         String url = "https://weather-broker-cdn.api.bbci.co.uk/en/observation/rss/";
-
-        public Task(String rss)
+        TextView display;
+        public Task(String rss, TextView text)
         {
             url = url + rss;
+            display = text;
         }
         @Override
         public void run()
@@ -260,11 +261,7 @@ public class List extends Fragment implements View.OnClickListener {
                     for (LatestWeather d : latest)
                     {
                         threeDayWeather += d.toString();
-                        newYorkWeather.setText(threeDayWeather);
-                        unitedKingdomWeather.setText(threeDayWeather);
-                        omanWeather.setText(threeDayWeather);
-                        mauritiusWeather.setText(threeDayWeather);
-                        bangWeather.setText(threeDayWeather);
+                        display.setText(threeDayWeather);
                     }
                 }
             });
