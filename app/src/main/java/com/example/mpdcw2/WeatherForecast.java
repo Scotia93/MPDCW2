@@ -1,6 +1,6 @@
 package com.example.mpdcw2;
 
-public class CurrentWeather {
+public class WeatherForecast {
 
     private String day;
     private String weather;

@@ -32,8 +32,8 @@ public class Home extends Fragment implements View.OnClickListener {
     private String result;
     private String url1="";
     private String urlSource="https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/5128581";
-    public CurrentWeather currentWeather = null;
-    private LinkedList<CurrentWeather> weatherForecast;
+    public WeatherForecast weatherForecast = null;
+    private LinkedList<WeatherForecast> forecast;
     boolean useTitle = false;
     private Handler mHandler;
 
@@ -55,7 +55,7 @@ public class Home extends Fragment implements View.OnClickListener {
         rawDataDisplay = (TextView) view.findViewById(R.id.rawDataDisplay);
         startButton = (Button) view.findViewById(R.id.startButton);
         startButton.setOnClickListener(this);
-        weatherForecast = new LinkedList<CurrentWeather>();
+        forecast = new LinkedList<WeatherForecast>();
         return view;
     }
 
@@ -81,7 +81,7 @@ public class Home extends Fragment implements View.OnClickListener {
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 if (eventType == XmlPullParser.START_TAG) {
                     if (xpp.getName().equalsIgnoreCase("Item")) {
-                        currentWeather = new CurrentWeather();
+                        weatherForecast = new WeatherForecast();
                         useTitle=true;
                         Log.d("MyTag", "Weather item found");
                     }
@@ -96,8 +96,8 @@ public class Home extends Fragment implements View.OnClickListener {
 
 
                         //set description in new class
-                        currentWeather.setDay(day);
-                        currentWeather.setWeather(weather);
+                        weatherForecast.setDay(day);
+                        weatherForecast.setWeather(weather);
 
                         Log.d("MyTag", "day is: "+ day + "\nweather is: " + weather);
                         Log.d("MyTag", "Weather for " + temp);
@@ -121,17 +121,17 @@ public class Home extends Fragment implements View.OnClickListener {
 
                         //set description in new class
                         //weather.setdescription(temp)
-                        currentWeather.setMaxTemp(maxTemp);
-                        currentWeather.setMinTemp(minTemp);
-                        currentWeather.setWindDirection(windDirection);
-                        currentWeather.setWindSpeed(windSpeed);
-                        currentWeather.setVisibility(visibility);
-                        currentWeather.setPressure(pressure);
-                        currentWeather.setHumidity(humidity);
-                        currentWeather.setUvRisk(uvRisk);
-                        currentWeather.setPollution(pollution);
-                        currentWeather.setSunriseTime(sunriseTime);
-                        currentWeather.setSunsetTime(sunsetTime);
+                        weatherForecast.setMaxTemp(maxTemp);
+                        weatherForecast.setMinTemp(minTemp);
+                        weatherForecast.setWindDirection(windDirection);
+                        weatherForecast.setWindSpeed(windSpeed);
+                        weatherForecast.setVisibility(visibility);
+                        weatherForecast.setPressure(pressure);
+                        weatherForecast.setHumidity(humidity);
+                        weatherForecast.setUvRisk(uvRisk);
+                        weatherForecast.setPollution(pollution);
+                        weatherForecast.setSunriseTime(sunriseTime);
+                        weatherForecast.setSunsetTime(sunsetTime);
                         Log.d("MyTag", "maxTemp is " + maxTemp +
                                 "\nminTemp is " + minTemp +
                                 "\nwindDirection is " + windDirection +
@@ -148,7 +148,7 @@ public class Home extends Fragment implements View.OnClickListener {
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if (xpp.getName().equalsIgnoreCase("Item")) {
                         Log.d("MyTag", "Current weather parsing finished");
-                        weatherForecast.add(currentWeather);
+                        forecast.add(weatherForecast);
                     }
                 }
                 eventType = xpp.next();
@@ -229,7 +229,7 @@ public class Home extends Fragment implements View.OnClickListener {
                     Log.d("UI thread", "I am the UI thread");
                     //rawDataDisplay.setText(currentWeather.toString());
                     String threeDayWeather = "";
-                    for (CurrentWeather d : weatherForecast)
+                    for (WeatherForecast d : forecast)
                     {
                         threeDayWeather += d.toString();
                         rawDataDisplay.setText(threeDayWeather);
