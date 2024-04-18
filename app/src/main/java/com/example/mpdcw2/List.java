@@ -29,6 +29,7 @@ import java.util.LinkedList;
 public class List extends Fragment implements View.OnClickListener {
 
     private Button btnNext;
+    private Button reFreshbtn;
     private Button btnBack;
     private Button newYorkButton;
     private Button londonButton;
@@ -57,6 +58,7 @@ public class List extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
+        reFreshbtn = (Button) view.findViewById(R.id.reFreshbtn);
         btnNext = (Button) view.findViewById(R.id.btnNext);
         btnBack = (Button) view.findViewById(R.id.btnBack);
         newYorkButton = (Button) view.findViewById(R.id.newYorkButton);
@@ -66,6 +68,7 @@ public class List extends Fragment implements View.OnClickListener {
         bangButton = (Button) view.findViewById(R.id.bangButton);
         btnNext.setOnClickListener(this);
         btnBack.setOnClickListener(this);
+        reFreshbtn.setOnClickListener(this);
         newYorkButton.setOnClickListener(this);
         londonButton.setOnClickListener(this);
         omanButton.setOnClickListener(this);
@@ -110,6 +113,9 @@ public class List extends Fragment implements View.OnClickListener {
             String bangID = "1185241";
             new Thread(new Task(bangID, bangWeather)).start();
         }
+        else if (aview == reFreshbtn){
+            getActivity().recreate();
+        }
     }
 
 
@@ -148,29 +154,46 @@ public class List extends Fragment implements View.OnClickListener {
                         String temp = xpp.nextText();
 
                         String[]currentArray = temp.split(",");
-                        String currentTemperature = currentArray[0].trim();
-                        String windDirection = currentArray[1].trim();
-                        String windSpeed = currentArray[2].trim();
-                        String humidity = currentArray[3].trim();
-                        String pressure = currentArray[4].trim();
-                        String visibility = currentArray[5].trim();
 
-                        //set description in new class
-                        //weather.setdescription(temp)
-                        latestWeather.setCurrentTemperature(currentTemperature);
-                        latestWeather.setWindDirection(windDirection);
-                        latestWeather.setWindSpeed(windSpeed);
-                        latestWeather.setHumidity(humidity);
-                        latestWeather.setPressure(pressure);
-                        latestWeather.setVisibility(visibility);
-
-                        Log.d("MyTag", "currentTemperature is " + currentTemperature +
-                                "\nWindDirection is " + windDirection +
-                                "\nwindSpeed is " + windSpeed +
-                                "\nhumidity is " + humidity +
-                                "\npressure is " + pressure +
-                                "\nvisibility is " + visibility +
-                                "\nhumidity is " + humidity);
+                        int count = 0;
+                        for (String j : currentArray){
+                            if (currentArray[count].contains("Temperature")) {
+                                String currentTemperature = currentArray[count].trim();
+                                latestWeather.setCurrentTemperature(currentTemperature);
+                                Log.d("MyTag", "Current Temperature is: " + currentTemperature);
+                                count++;
+                            }
+                            if (currentArray[count].contains("Wind Direction")) {
+                                String windDirection = currentArray[count].trim();
+                                latestWeather.setWindDirection(windDirection);
+                                Log.d("MyTag", "Wind Direction is: " + windDirection);
+                                count++;
+                            }
+                            if (currentArray[count].contains("Wind Speed")) {
+                                String windSpeed = currentArray[count].trim();
+                                latestWeather.setWindSpeed(windSpeed);
+                                Log.d("MyTag", "Wind Speed is: " + windSpeed);
+                                count++;
+                            }
+                            if (currentArray[count].contains("Humidity")) {
+                                String humidity = currentArray[count].trim();
+                                latestWeather.setHumidity(humidity);
+                                Log.d("MyTag", "Humidity is: " + humidity);
+                                count++;
+                            }
+                            if (currentArray[count].contains("Pressure")) {
+                                String pressure = currentArray[count].trim();
+                                latestWeather.setPressure(pressure);
+                                Log.d("MyTag", "Pressure is: " + pressure);
+                                count++;
+                            }
+                            if (currentArray[count].contains("Visibility")) {
+                                String visibility = currentArray[count].trim();
+                                latestWeather.setVisibility(visibility);
+                                Log.d("MyTag", "Visibility is: " + visibility);
+                                count++;
+                            }
+                        }
                     }
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if (xpp.getName().equalsIgnoreCase("Item")) {
@@ -179,7 +202,6 @@ public class List extends Fragment implements View.OnClickListener {
                     }
                 }
                 eventType = xpp.next();
-
             }
         }
         catch(XmlPullParserException ae1)
@@ -237,7 +259,6 @@ public class List extends Fragment implements View.OnClickListener {
             //Get rid of the first tag <?xml version="1.0" encoding="utf-8"?>
             int i = result.indexOf(">");
             result = result.substring(i+1);
-            Log.e("MyTag - cleaned",result);
 
             parseData(result);
             //

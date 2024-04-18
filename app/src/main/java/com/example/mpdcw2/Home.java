@@ -31,7 +31,7 @@ public class Home extends Fragment implements View.OnClickListener {
     private Button startButton;
     private String result;
     private String url1="";
-    private String urlSource="https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/5128581";
+    private String urlSource="https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/1185241";
     public WeatherForecast weatherForecast = null;
     private LinkedList<WeatherForecast> forecast;
     boolean useTitle = false;
@@ -92,58 +92,91 @@ public class Home extends Fragment implements View.OnClickListener {
                         String[]titleArray = temp.split(",");
                         String Summary = titleArray[0];
                         String day = Summary.split(":")[0].trim();
-                        String weather = Summary.split(":")[1].trim();
+                        //String weather = Summary.split(":")[1].trim();
 
 
                         //set description in new class
                         weatherForecast.setDay(day);
-                        weatherForecast.setWeather(weather);
+                        //weatherForecast.setSummary(weather);
 
-                        Log.d("MyTag", "day is: "+ day + "\nweather is: " + weather);
-                        Log.d("MyTag", "Weather for " + temp);
+                        //Log.d("MyTag", "day is: "+ day + "\nweather is: " + weather);
+                        Log.d("MyTag", day);
                     }
                     else if (xpp.getName().equalsIgnoreCase("description") && useTitle)
                     {
                         String temp = xpp.nextText();
 
                         String[]descriptionArray = temp.split(",");
-                        String maxTemp = descriptionArray[0].trim();
-                        String minTemp = descriptionArray[1].trim();
-                        String windDirection = descriptionArray[2].trim();
-                        String windSpeed = descriptionArray[3].trim();
-                        String visibility = descriptionArray[4].trim();
-                        String pressure = descriptionArray[5].trim();
-                        String humidity = descriptionArray[6].trim();
-                        String uvRisk = descriptionArray[7].trim();
-                        String pollution = descriptionArray[8].trim();
-                        String sunriseTime = descriptionArray[9].trim();
-                        String sunsetTime = descriptionArray[10].trim();
 
-                        //set description in new class
-                        //weather.setdescription(temp)
-                        weatherForecast.setMaxTemp(maxTemp);
-                        weatherForecast.setMinTemp(minTemp);
-                        weatherForecast.setWindDirection(windDirection);
-                        weatherForecast.setWindSpeed(windSpeed);
-                        weatherForecast.setVisibility(visibility);
-                        weatherForecast.setPressure(pressure);
-                        weatherForecast.setHumidity(humidity);
-                        weatherForecast.setUvRisk(uvRisk);
-                        weatherForecast.setPollution(pollution);
-                        weatherForecast.setSunriseTime(sunriseTime);
-                        weatherForecast.setSunsetTime(sunsetTime);
-                        Log.d("MyTag", "maxTemp is " + maxTemp +
-                                "\nminTemp is " + minTemp +
-                                "\nwindDirection is " + windDirection +
-                                "\nwindSpeed is " + windSpeed +
-                                "\nvisibility is " + visibility +
-                                "\npressure is " + pressure +
-                                "\nhumidity is " + humidity +
-                                "\nuvRisk is " + uvRisk +
-                                "\npollution is " + pollution +
-                                "\nsunriseTime is " + sunriseTime +
-                                "\nsunsetTime is " + sunsetTime);
-                        Log.d("MyTag", "Temperature info:  " + temp);
+                        int count = 0;
+                        for (String j : descriptionArray){
+                            if(descriptionArray[count].contains("Maximum Temperature")){
+                                String maximumTemp = descriptionArray[count].trim();
+                                weatherForecast.setMaxTemp(maximumTemp);
+                                Log.d("MyTag", "Maximum Temperature is: " + maximumTemp);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("Minimum Temperature")){
+                                String minimumTemp = descriptionArray[count].trim();
+                                weatherForecast.setMinTemp(minimumTemp);
+                                Log.d("MyTag", "Minimum Temperature is: " + minimumTemp);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("Wind Direction")){
+                                String windDir = descriptionArray[count].trim();
+                                weatherForecast.setWindDirection(windDir);
+                                Log.d("MyTag", "Wind Direction: " + windDir);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("Wind Speed")){
+                                String windSp = descriptionArray[count].trim();
+                                weatherForecast.setWindSpeed(windSp);
+                                Log.d("MyTag", "Wind Speed: " + windSp);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("Visibility")){
+                                String visi = descriptionArray[count].trim();
+                                weatherForecast.setVisibility(visi);
+                                Log.d("MyTag", "Visibility is: " + visi);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("Pressure")){
+                                String press = descriptionArray[count].trim();
+                                weatherForecast.setPressure(press);
+                                Log.d("MyTag", "Pressure is: " + press);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("Humidity")){
+                                String humid = descriptionArray[count].trim();
+                                weatherForecast.setHumidity(humid);
+                                Log.d("MyTag", "Humidity is: " + humid);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("UV Risk")){
+                                String uv = descriptionArray[count].trim();
+                                weatherForecast.setUvRisk(uv);
+                                Log.d("MyTag", "UV Risk is: " + uv);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("Pollution")){
+                                String poll = descriptionArray[count].trim();
+                                weatherForecast.setPollution(poll);
+                                Log.d("MyTag", "Pollution: " + poll);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("Sunrise")){
+                                String sunRise = descriptionArray[count].trim();
+                                weatherForecast.setSunriseTime(sunRise);
+                                Log.d("MyTag", "SunRise is at: " + sunRise);
+                                count++;
+                            }
+                            if(descriptionArray[count].contains("Sunset")){
+                                String sunSet = descriptionArray[count].trim();
+                                weatherForecast.setSunsetTime(sunSet);
+                                Log.d("MyTag", "Sunset is at: " + sunSet);
+                                count++;
+                            }
+                        }
                     }
                 } else if (eventType == XmlPullParser.END_TAG) {
                     if (xpp.getName().equalsIgnoreCase("Item")) {
@@ -152,7 +185,6 @@ public class Home extends Fragment implements View.OnClickListener {
                     }
                 }
                 eventType = xpp.next();
-
             }
         }
         catch(XmlPullParserException ae1)
@@ -209,7 +241,7 @@ public class Home extends Fragment implements View.OnClickListener {
             //Get rid of the first tag <?xml version="1.0" encoding="utf-8"?>
             int i = result.indexOf(">");
             result = result.substring(i+1);
-            Log.e("MyTag - cleaned",result);
+            //Get rid of the 2nd tag <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 
             parseData(result);
             //
@@ -237,6 +269,5 @@ public class Home extends Fragment implements View.OnClickListener {
                 }
             });
         }
-
     }
 }

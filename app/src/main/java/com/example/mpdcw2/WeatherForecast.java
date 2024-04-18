@@ -3,7 +3,7 @@ package com.example.mpdcw2;
 public class WeatherForecast {
 
     private String day;
-    private String weather;
+    private String summary;
     private String maxTemp;
     private String minTemp;
     private String windDirection;
@@ -23,12 +23,12 @@ public class WeatherForecast {
         this.day = day;
     }
 
-    public String getWeather() {
-        return weather;
+    public String getSummary() {
+        return summary;
     }
 
-    public void setWeather(String weather) {
-        this.weather = weather;
+    public void setSummary(String weather) {
+        this.summary = weather;
     }
 
     public String getMaxTemp() {
@@ -126,7 +126,7 @@ public class WeatherForecast {
     @Override
     public String toString() {
         return day + "\n" +
-                weather + "\n" +
+                summary + "\n" +
                 maxTemp + "\n" +
                 minTemp + "\n" +
                 windDirection + "\n" +
