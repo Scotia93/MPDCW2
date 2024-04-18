@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+// Name                 Scott Adams
+// Student ID           S2137174
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scott Adams S2137174"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textSize="10sp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,26 +38,176 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The current weather in Glasgow is:"
+            android:text="@string/this_dedicated_weather_application_allows_you_to_view_the_weather_at_different_gcu_campus_locations_the_globe"
             android:textColor="@color/black"
-            android:textSize="26sp"
+            android:textSize="22sp"
             android:textAlignment="center"/>
-        <TextView
-            android:id="@+id/rawDataDisplay"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"/>
-        <Button
-            android:id="@+id/startButton"
-            android:layout_width="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Use the Buttons below to view pictures of the different GCU Campuses!"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Press to view current weather"
-            android:textSize="20sp"
-            android:padding="1sp"
-            />
-
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/campusNxtBtn"
+                android:layout_weight="1"
+                android:text="Previous"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/campusPreBtn"
+                android:layout_weight="1"
+                android:text="Next"/>
+        </LinearLayout>
+        <ViewFlipper
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/pictureFlipper">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="400dp"
+                    android:maxHeight="400dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/gcuglasgow" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:text="Glasgow Campus"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="400dp"
+                    android:maxHeight="400dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/gculondon" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:text="London Campus"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="400dp"
+                    android:maxHeight="400dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/gcunyccampus" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:text="New York City Campus"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical">
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:maxWidth="400dp"
+                        android:maxHeight="400dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/national_university_of_science_technology" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:text="Oman Campus - National University of Science and Technology"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="400dp"
+                    android:maxHeight="400dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/grameen" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:text="Bangladesh - Grameen Caledonian College of Nursing"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="400dp"
+                    android:maxHeight="400dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/alc" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:text="Mauritius - African Leadership College"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </ViewFlipper>
     </LinearLayout>
-
-
 </FrameLayout>

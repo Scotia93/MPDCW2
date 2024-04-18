@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+// Name                 Scott Adams
+// Student ID           S2137174
+-->
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scott Adams S2137174"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textSize="10sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,17 +33,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Next Campus"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:layout_gravity="center_horizontal"
+
             android:id="@+id/btnNext"
             android:background="@drawable/button_style"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Previous Campus"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/btnBack"
+            android:layout_marginTop="5sp"
             android:background="@drawable/button_style"/>
         <Button
             android:id="@+id/reFreshbtn"
@@ -40,6 +53,7 @@
             android:layout_width="wrap_content"
             android:text="refresh"
             android:layout_gravity="center"
+            android:layout_marginTop="5sp"
             android:background="@drawable/button_style"/>
         <ViewFlipper
             android:layout_width="fill_parent"
@@ -69,6 +83,7 @@
                     android:id="@+id/glasgowWeather"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:textAlignment="center"/>
                 <Button
                     android:layout_width="wrap_content"
@@ -103,6 +118,7 @@
                     android:id="@+id/newYorkWeather"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:textAlignment="center"/>
                 <Button
                     android:layout_width="wrap_content"
@@ -136,6 +152,7 @@
                     android:id="@+id/unitedKingdomWeather"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:textAlignment="center"/>
                 <Button
                     android:layout_width="wrap_content"
@@ -169,6 +186,7 @@
                     android:id="@+id/omanWeather"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:textAlignment="center"/>
                 <Button
                     android:layout_width="wrap_content"
@@ -202,6 +220,7 @@
                     android:id="@+id/mauritiusWeather"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:textAlignment="center"/>
                 <Button
                     android:layout_width="wrap_content"
@@ -235,6 +254,7 @@
                     android:id="@+id/bangWeather"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="20sp"
                     android:textAlignment="center"/>
                 <Button
                     android:layout_width="wrap_content"

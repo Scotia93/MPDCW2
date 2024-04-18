@@ -1,3 +1,6 @@
+// Name                 Scott Adams
+// Student ID           S2137174
+
 package com.example.mpdcw2;
 
 import androidx.annotation.NonNull;

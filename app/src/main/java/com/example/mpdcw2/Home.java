@@ -1,3 +1,5 @@
+// Name                 Scott Adams
+// Student ID           S2137174
 package com.example.mpdcw2;
 
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -30,6 +33,9 @@ public class Home extends Fragment implements View.OnClickListener {
 
     private TextView rawDataDisplay;
     private Button startButton;
+    private Button campusNxtBtn;
+    private Button campusPreBtn;
+    private ViewFlipper pictureFlipper;
     private String result;
     private String url1="";
     private String urlSource="https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/2648579";
@@ -53,17 +59,32 @@ public class Home extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        rawDataDisplay = (TextView) view.findViewById(R.id.rawDataDisplay);
-        startButton = (Button) view.findViewById(R.id.startButton);
-        startButton.setOnClickListener(this);
-        forecast = new ArrayList<WeatherForecast>();
+        campusNxtBtn = (Button) view.findViewById(R.id.campusNxtBtn);
+        campusPreBtn = (Button) view.findViewById(R.id.campusPreBtn);
+        pictureFlipper = (ViewFlipper) view.findViewById(R.id.pictureFlipper);
+
+        campusNxtBtn.setOnClickListener(this);
+        campusPreBtn.setOnClickListener(this);
+        //rawDataDisplay = (TextView) view.findViewById(R.id.rawDataDisplay);
+        //startButton = (Button) view.findViewById(R.id.startButton);
+        //startButton.setOnClickListener(this);
+        //forecast = new ArrayList<WeatherForecast>();
         //forecast = new LinkedList<WeatherForecast>();
         return view;
     }
 
     public void onClick(View aview)
     {
-        startProgress();
+        if (aview == campusNxtBtn){
+            pictureFlipper.showNext();
+            Log.d("MyTag", "Next Campus Pic");
+        }
+        else if (aview == campusPreBtn){
+            pictureFlipper.showPrevious();
+            Log.d("MyTag", "Previous Campus Pic");
+        }
+
+        //startProgress();
     }
 
     public void startProgress()
