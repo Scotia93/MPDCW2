@@ -23,7 +23,6 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             default: return new Home();
         }
     }
-
     @Override
     public int getItemCount() {
         return 3;

@@ -54,7 +54,6 @@ public class List extends Fragment implements View.OnClickListener {
     private Handler mHandler;
 
     public List() {
-        // Required empty public constructor
     }
 
     @Override
@@ -129,8 +128,6 @@ public class List extends Fragment implements View.OnClickListener {
             getActivity().recreate();
         }
     }
-
-
     private void parseData(String result)
     {
         try {
@@ -153,10 +150,6 @@ public class List extends Fragment implements View.OnClickListener {
                         String[]titleArray = temp.split(",");
                         String Summary = titleArray[0];
                         String day = Summary.split(":")[0].trim();
-                        //String weather = Summary.split(":")[1].trim();
-
-
-                        //set description in new class
                         latestWeather.setDay(day);
 
                         Log.d("MyTag", "day is: "+ day);
@@ -227,7 +220,6 @@ public class List extends Fragment implements View.OnClickListener {
 
         Log.d("MyTag", "end of document");
     }
-
     private class Task implements Runnable
     {
         String url = "https://weather-broker-cdn.api.bbci.co.uk/en/observation/rss/";
@@ -240,12 +232,10 @@ public class List extends Fragment implements View.OnClickListener {
         @Override
         public void run()
         {
-
             URL aurl;
             URLConnection yc;
             BufferedReader in = null;
             String inputLine = "";
-
 
             Log.e("MyTag","in run");
 
@@ -273,15 +263,6 @@ public class List extends Fragment implements View.OnClickListener {
             result = result.substring(i+1);
 
             parseData(result);
-            //
-            // Now that you have the xml data you can parse it
-            //
-
-
-
-            // Now update the TextView to display raw XML data
-            // Probably not the best way to update TextView
-            // but we are just getting started !
 
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable()
@@ -299,6 +280,5 @@ public class List extends Fragment implements View.OnClickListener {
                 }
             });
         }
-
     }
 }

@@ -45,7 +45,6 @@ public class Home extends Fragment implements View.OnClickListener {
     private Handler mHandler;
 
     public Home() {
-        // Required empty public constructor
     }
 
     @Override
@@ -68,7 +67,6 @@ public class Home extends Fragment implements View.OnClickListener {
         //rawDataDisplay = (TextView) view.findViewById(R.id.rawDataDisplay);
         //startButton = (Button) view.findViewById(R.id.startButton);
         //startButton.setOnClickListener(this);
-        //forecast = new ArrayList<WeatherForecast>();
         //forecast = new LinkedList<WeatherForecast>();
         return view;
     }
@@ -117,14 +115,10 @@ public class Home extends Fragment implements View.OnClickListener {
                         String Summary = titleArray[0];
                         String day = Summary.split(":")[0].trim();
                         String weather = Summary.split(":")[1].trim();
-
-
-                        //et description in new class
                         weatherForecast.setDay(day);
                         weatherForecast.setSummary(weather);
 
                         Log.d("MyTag", "day is: "+ day + "\nweather is: " + weather);
-                        //Log.d("MyTag", day);
                     }
                     else if (xpp.getName().equalsIgnoreCase("description") && useTitle)
                     {
@@ -222,7 +216,6 @@ public class Home extends Fragment implements View.OnClickListener {
 
         Log.d("MyTag", "end of document");
     }
-
     private class Task implements Runnable
     {
         private String url;
@@ -234,12 +227,10 @@ public class Home extends Fragment implements View.OnClickListener {
         @Override
         public void run()
         {
-
             URL aurl;
             URLConnection yc;
             BufferedReader in = null;
             String inputLine = "";
-
 
             Log.e("MyTag","in run");
 
@@ -268,15 +259,6 @@ public class Home extends Fragment implements View.OnClickListener {
             //Get rid of the 2nd tag <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 
             parseData(result);
-            //
-            // Now that you have the xml data you can parse it
-            //
-
-
-
-            // Now update the TextView to display raw XML data
-            // Probably not the best way to update TextView
-            // but we are just getting started !
 
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable()

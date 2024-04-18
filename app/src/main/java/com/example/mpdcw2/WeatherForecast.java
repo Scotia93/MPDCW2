@@ -4,7 +4,6 @@
 package com.example.mpdcw2;
 
 public class WeatherForecast {
-
     private String day;
     private String summary;
     private String maxTemp;
@@ -121,10 +120,6 @@ public class WeatherForecast {
     public void setSunsetTime(String sunsetTime) {
         this.sunsetTime = sunsetTime;
     }
-
-
-
-
 
     @Override
     public String toString() {
