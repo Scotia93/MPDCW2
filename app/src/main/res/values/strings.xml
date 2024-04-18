@@ -3,6 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps_fragment">MapsFragment</string>
-    <string name="this_dedicated_weather_application_allows_you_to_view_the_weather_at_different_gcu_campus_locations_the_globe">This dedicated weather application allows you to view the weather at different GCU campus locations the globe.</string>
+    <string name="this_dedicated_weather_application_allows_you_to_view_the_weather_at_different_gcu_campus_locations_the_globe">This dedicated weather application allows you to view the weather at different GCU campus locations around the globe.</string>
     <string name="please_use_the_navigation_bar_to_get_around_the_app">Please use the Navigation bar to get around the app.</string>
 </resources>
