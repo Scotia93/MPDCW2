@@ -68,5 +68,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        viewPager2.setUserInputEnabled(false);
     }
 }

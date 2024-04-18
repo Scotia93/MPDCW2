@@ -72,6 +72,7 @@ public class LatestWeather {
                 windDirection + "\n" +
                 windSpeed + "\n" +
                 humidity + "\n" +
-                "\n";
+                pressure + "\n" +
+                visibility;
     }
 }

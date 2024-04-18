@@ -23,6 +23,7 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Home extends Fragment implements View.OnClickListener {
@@ -31,9 +32,9 @@ public class Home extends Fragment implements View.OnClickListener {
     private Button startButton;
     private String result;
     private String url1="";
-    private String urlSource="https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/1185241";
+    private String urlSource="https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/2648579";
     public WeatherForecast weatherForecast = null;
-    private LinkedList<WeatherForecast> forecast;
+    private ArrayList<WeatherForecast> forecast;
     boolean useTitle = false;
     private Handler mHandler;
 
@@ -55,7 +56,8 @@ public class Home extends Fragment implements View.OnClickListener {
         rawDataDisplay = (TextView) view.findViewById(R.id.rawDataDisplay);
         startButton = (Button) view.findViewById(R.id.startButton);
         startButton.setOnClickListener(this);
-        forecast = new LinkedList<WeatherForecast>();
+        forecast = new ArrayList<WeatherForecast>();
+        //forecast = new LinkedList<WeatherForecast>();
         return view;
     }
 
@@ -90,17 +92,18 @@ public class Home extends Fragment implements View.OnClickListener {
                         String temp = xpp.nextText();
 
                         String[]titleArray = temp.split(",");
+
                         String Summary = titleArray[0];
                         String day = Summary.split(":")[0].trim();
-                        //String weather = Summary.split(":")[1].trim();
+                        String weather = Summary.split(":")[1].trim();
 
 
-                        //set description in new class
+                        //et description in new class
                         weatherForecast.setDay(day);
-                        //weatherForecast.setSummary(weather);
+                        weatherForecast.setSummary(weather);
 
-                        //Log.d("MyTag", "day is: "+ day + "\nweather is: " + weather);
-                        Log.d("MyTag", day);
+                        Log.d("MyTag", "day is: "+ day + "\nweather is: " + weather);
+                        //Log.d("MyTag", day);
                     }
                     else if (xpp.getName().equalsIgnoreCase("description") && useTitle)
                     {

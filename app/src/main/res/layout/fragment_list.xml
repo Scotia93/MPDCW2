@@ -39,11 +39,46 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="refresh"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:background="@drawable/button_style"/>
         <ViewFlipper
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:id="@+id/campusFlipper">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Glasgow"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_horizontal"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/flag_of_scotland_svg"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:maxHeight="100dp"
+                    android:maxWidth="150dp"/>
+                <TextView
+                    android:id="@+id/glasgowWeather"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Press to view Current Weather"
+                    android:textSize="22sp"
+                    android:background="@drawable/button_style"
+                    android:id="@+id/glasgowButton"/>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -74,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Press to view Current Weather"
-                    android:textSize="26sp"
+                    android:textSize="22sp"
                     android:background="@drawable/button_style"
                     android:id="@+id/newYorkButton"/>
             </LinearLayout>
@@ -107,6 +142,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Press to view Current Weather"
+                    android:textSize="22sp"
+                    android:background="@drawable/button_style"
                     android:id="@+id/londonButton"/>
             </LinearLayout>
             <LinearLayout
@@ -138,6 +175,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Press to view Current Weather"
+                    android:textSize="22sp"
+                    android:background="@drawable/button_style"
                     android:id="@+id/omanButton"/>
             </LinearLayout>
             <LinearLayout
@@ -169,6 +208,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Press to view Current Weather"
+                    android:textSize="22sp"
+                    android:background="@drawable/button_style"
                     android:id="@+id/mauritiusButton"/>
             </LinearLayout>
             <LinearLayout
@@ -200,6 +241,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Press to view Current Weather"
+                    android:textSize="22sp"
+                    android:background="@drawable/button_style"
                     android:id="@+id/bangButton"/>
             </LinearLayout>
         </ViewFlipper>

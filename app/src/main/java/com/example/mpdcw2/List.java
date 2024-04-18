@@ -31,11 +31,13 @@ public class List extends Fragment implements View.OnClickListener {
     private Button btnNext;
     private Button reFreshbtn;
     private Button btnBack;
+    private Button glasgowButton;
     private Button newYorkButton;
     private Button londonButton;
     private Button omanButton;
     private Button mauritiusButton;
     private Button bangButton;
+    private TextView glasgowWeather;
     private TextView newYorkWeather;
     private TextView unitedKingdomWeather;
     private TextView omanWeather;
@@ -61,6 +63,7 @@ public class List extends Fragment implements View.OnClickListener {
         reFreshbtn = (Button) view.findViewById(R.id.reFreshbtn);
         btnNext = (Button) view.findViewById(R.id.btnNext);
         btnBack = (Button) view.findViewById(R.id.btnBack);
+        glasgowButton = (Button) view.findViewById(R.id.glasgowButton);
         newYorkButton = (Button) view.findViewById(R.id.newYorkButton);
         londonButton = (Button) view.findViewById(R.id.londonButton);
         omanButton = (Button) view.findViewById(R.id.omanButton);
@@ -69,12 +72,14 @@ public class List extends Fragment implements View.OnClickListener {
         btnNext.setOnClickListener(this);
         btnBack.setOnClickListener(this);
         reFreshbtn.setOnClickListener(this);
+        glasgowButton.setOnClickListener(this);
         newYorkButton.setOnClickListener(this);
         londonButton.setOnClickListener(this);
         omanButton.setOnClickListener(this);
         mauritiusButton.setOnClickListener(this);
         bangButton.setOnClickListener(this);
         campusFlipper = (ViewFlipper) view.findViewById(R.id.campusFlipper);
+        glasgowWeather = (TextView) view.findViewById(R.id.glasgowWeather);
         newYorkWeather = (TextView) view.findViewById(R.id.newYorkWeather);
         unitedKingdomWeather = (TextView) view.findViewById(R.id.unitedKingdomWeather);
         omanWeather = (TextView) view.findViewById(R.id.omanWeather);
@@ -92,6 +97,10 @@ public class List extends Fragment implements View.OnClickListener {
         else if  (aview == btnBack){
             campusFlipper.showPrevious();
             Log.d("MyTag", "Previous Campus");
+        }
+        else if (aview == glasgowButton){
+            String newYorkID = "2648579";
+            new Thread(new Task(newYorkID, glasgowWeather)).start();
         }
         else if (aview == newYorkButton){
             String newYorkID = "5128581";
@@ -277,12 +286,12 @@ public class List extends Fragment implements View.OnClickListener {
                 public void run() {
                     Log.d("UI thread", "I am the UI thread");
                     //rawDataDisplay.setText(currentWeather.toString());
-                    String threeDayWeather = "";
+                    String currentWeather = "";
 
                     for (LatestWeather d : latest)
                     {
-                        threeDayWeather += d.toString();
-                        display.setText(threeDayWeather);
+                        currentWeather += d.toString();
+                        display.setText(currentWeather);
                     }
                 }
             });
